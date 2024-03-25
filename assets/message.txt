@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class MyClass {
+    public static void main(String args[]) {
+        Scanner myObj = new Scanner(System.in);
+        char orderAgain;
+
+        do {
+            System.out.println("Welcome to McJollibe");
+            System.out.println("Menu List:");
+            System.out.println("C1 - Fried Chicken - 100");
+            System.out.println("C2 - Ice Cream - 80");
+            System.out.println("C3 - Drinks - 50");
+            System.out.println("C4 - Chicken en Rice - 150");
+
+            System.out.print("Select your order: ");
+            String order = myObj.nextLine();
+
+            int total, money, qty, qTty, qtty;
+            int price = 0;
+
+            switch (order) {
+                case "C1":
+                    price = 100;
+                    System.out.println("Your order is Fried Chicken - 100");
+                    break;
+                case "C2":
+                    price = 80;
+                    System.out.println("Your order is Ice Cream - 80");
+                    break;
+                case "C3":
+                    price = 50;
+                    System.out.println("Your order is Drinks - 50");
+                    break;
+                case "C4":
+                    price = 150;
+                    System.out.println("Your order is Chicken en Rice - 150");
+                    break;
+                default:
+                    System.out.println("Invalid Order");
+                    return;
+            }
+
+            System.out.print("How many order: ");
+            qty = myObj.nextInt();
+            qTty = qty * price;
+            System.out.println("It will be: " + qTty);
+
+            System.out.print("Input your money: ");
+            money = myObj.nextInt();
+
+            if (money < qTty) {
+                total = qTty - money;
+                System.out.println("Order Unsuccessful");
+                System.out.println("You paid " + total + " less");
+            } else if (money > qTty) {
+                qtty = money - qTty;
+                System.out.println("Ordered Successful");
+                System.out.println("Your change is " + qtty);
+            } else {
+                System.out.println("Ordered Successful");
+            }
+
+            System.out.print("Do you want to order again? (Y/N): ");
+            orderAgain = myObj.next().charAt(0);
+            myObj.nextLine();
+        } while (orderAgain == 'Y' || orderAgain == 'y');
+
+        System.out.println("Thank you for ordering!");
+    }
+}
